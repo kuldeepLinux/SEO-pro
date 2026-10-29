@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evidence-first SEO audits with technical checks, schema review, AI recommendations and prioritized fixes.">
+  <title>SEO Pro AI — Website Audit</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SEO Pro AI home"><span class="brand-icon">S</span><span>SEO Pro <b>AI</b></span></a>
+    <span class="status"><i></i> Evidence-first audit</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">TECHNICAL SEO · CONTENT · STRUCTURED DATA</p>
+      <h1>Find what’s holding<br><span>your website back.</span></h1>
+      <p class="subhead">Scan public pages, inspect real HTML signals, validate JSON-LD and build a prioritized fix plan. AI review is optional.</p>
+      <form id="audit-form" class="url-form">
+        <label class="sr-only" for="url">Website URL</label>
+        <input id="url" name="url" type="url" placeholder="https://example.com" autocomplete="url" required>
+        <button id="scan-button" type="submit">Scan website <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="small-note">Scans publicly reachable HTTP(S) pages only. Use only on sites you own or have permission to assess.</p>
+    </section>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+    <section id="results" hidden>
+      <div class="results-head">
+        <div><p class="eyebrow">AUDIT RESULTS</p><h2 id="result-domain">Website report</h2><p id="scan-meta" class="muted"></p></div>
+        <button id="export-button" class="secondary" type="button">Export JSON</button>
+      </div>
+      <div class="score-grid">
+        <article class="score-card"><span class="muted">Audit health indicator</span><strong id="score">—</strong><span class="muted tiny">Heuristic score, not a Google ranking score</span></article>
+        <article class="metric-card"><span class="muted">Pages scanned</span><strong id="pages-count">—</strong></article>
+        <article class="metric-card high-card"><span class="muted">High priority</span><strong id="high-count">—</strong></article>
+        <article class="metric-card medium-card"><span class="muted">Medium priority</span><strong id="medium-count">—</strong></article>
+        <article class="metric-card"><span class="muted">Low priority</span><strong id="low-count">—</strong></article>
+      </div>
+      <div class="tools-row">
+        <button id="ai-button" type="button">✦ Generate AI fix plan</button>
+        <span id="ai-state" class="muted tiny">AI requires a server-side API key.</span>
+      </div>
+      <article id="ai-report-card" class="panel" hidden><div class="panel-heading"><h3>AI consultant report</h3><button id="copy-ai" class="secondary small-button" type="button">Copy report</button></div><div id="ai-report" class="markdownish"></div></article>
+      <div class="two-col">
+        <article class="panel"><h3>Technical checks</h3><div id="tech-summary" class="check-list"></div></article>
+        <article class="panel"><h3>Schema detected</h3><p id="schema-types" class="schema-list">—</p><p class="muted tiny">JSON-LD syntax is parsed. Use the external validators for full Schema.org and Google rich-result validation.</p></article>
+      </div>
+      <div class="filter-row">
+        <h3>Findings <span id="finding-count" class="muted"></span></h3>
+        <label for="priority-filter" class="sr-only">Filter findings by priority</label>
+        <select id="priority-filter"><option value="all">All priorities</option><option value="high">High impact</option><option value="medium">Medium impact</option><option value="low">Low impact</option></select>
+      </div>
+      <div id="findings" class="findings"></div>
+      <article class="panel"><h3>Scanned pages</h3><div class="table-wrap"><table><thead><tr><th>URL</th><th>Status</th><th>Title</th><th>Words</th><th>Schema</th></tr></thead><tbody id="pages-table"></tbody></table></div></article>
+      <p class="disclaimer">Limitations: this is a limited crawler, not a replacement for Google Search Console or a full browser-rendering crawler. JavaScript-rendered content, backlinks, actual index status, field Core Web Vitals, search volume and rankings are not inferred. Always verify findings before making changes.</p>
+    </section>
+    <footer><span>SEO Pro AI</span><span>Measure first. Fix by impact. Verify every change.</span></footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
